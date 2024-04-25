@@ -1,90 +1,124 @@
 header {
   background: $primary-color;
   color: white;
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
-  justify-content: space-between; // Ensures elements are spaced out
   align-items: center;
 
+  .container {
+    width: 100%; // Ensures the container spans the entire width of the header
+    display: flex;
+    justify-content: space-between; // Keeps the title on the left and menu toggle on the right
+    align-items: center;
+    padding-right: 20px; // Adds padding to the right edge of the container
+  }
+
   .site-title {
-      flex-grow: 1;
+    margin-right: auto; // Pushes everything else to the right
   }
 
   .menu-toggle {
-      display: flex; // Ensure it's always displayed
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #333;
-      border-radius: 5px;
-      padding: 10px;
-      cursor: pointer;
-      color: white;
-      border: 0; // Ensuring no default browser styles interfere
-      float:right;
-      z-index: 1500; // Higher z-index to ensure it's above other elements
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 12px; // Slightly larger padding to increase the size
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1500;
+    margin-right: 10px; // Adds space to the right edge
 
-      .menu-line {
-        display: block;
-        width: 25px; // Width of the hamburger lines
-        height: 3px; // Height of the hamburger lines
-        background-color: white; // Color of the lines
-        margin: 5px 0; // Space between the lines
+    .menu-line {
+      width: 40px; // Slightly wider for better visibility
+      height: 2px;
+      background-color: white;
+      margin: 6px 0; // Slightly more space between lines
+    }
+
+    &.is-active {
+      .menu-line:nth-child(1) {
+        transform: translateY(18px) rotate(45deg); // Adjust based on new spacing
+      }
+
+      .menu-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-line:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg); // Adjust based on new spacing
+      }
     }
   }
+}
 
-  nav {
-      position: relative; // Maintaining relative positioning for nav
+nav {
+  .primary-menu-container {
+    width: 100%; // Ensures the navigation fills the header
+  }
 
-      .primary-menu-class {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          background-color: rgba(0, 0, 0, 0.9);
-          position: fixed; // Using fixed to ensure it's positioned relative to the viewport
-          top: 0; // Align to the top
-          right: -100%; // Start off-screen
-          width: 50%; // Width for desktop
-          height: 100vh; // Full viewport height
-          box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-          transition: right 0.3s ease; // Smooth transition for sliding in
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+  .primary-menu-class {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 
-          &.is-active {
-              right: 0; // Bring into view when active
-          }
+    .menu-close {
+      display: none; // Initially hidden
+      position: absolute;
+      top: 20px;
+      right: 20px; // Ensures space to the right edge
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1501;
+    }
 
-          li {
-              width: 100%;
-              text-align: center;
+    &.is-active {
+      right: 0; // Slides in the menu
 
-              a {
-                  padding: 10px 20px;
-                  display: block;
-                  width: 100%;
-                  color: #00aff0;
-
-                  &:hover, &:focus {
-                      background-color: rgba(255,255,255,0.1);
-                      color: #00aff0;
-                  }
-              }
-          }
+      .menu-close {
+        display: block; // Display the close button only when the menu is active
       }
+    }
+
+    li {
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+      }
+    }
+
+    list-style-type: none; // Removes bullet points
+    padding-left: 0; // Adjust padding if necessary
   }
 }
 
 @media (max-width: 1024px) {
   nav .primary-menu-class {
-      width: 40%; // Adjusting for tablets and mobile
+    width: 40%; // Smaller width for smaller screens
   }
 }
 
 @media (max-width: 600px) {
   nav .primary-menu-class {
-      width: 100%; // Full width for mobile
+    width: 100%; // Full width on mobile
   }
 }
