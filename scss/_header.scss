@@ -1,0 +1,90 @@
+header {
+  background: $primary-color;
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between; // Ensures elements are spaced out
+  align-items: center;
+
+  .site-title {
+      flex-grow: 1;
+  }
+
+  .menu-toggle {
+      display: flex; // Ensure it's always displayed
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #333;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      color: white;
+      border: 0; // Ensuring no default browser styles interfere
+      float:right;
+      z-index: 1500; // Higher z-index to ensure it's above other elements
+
+      .menu-line {
+        display: block;
+        width: 25px; // Width of the hamburger lines
+        height: 3px; // Height of the hamburger lines
+        background-color: white; // Color of the lines
+        margin: 5px 0; // Space between the lines
+    }
+  }
+
+  nav {
+      position: relative; // Maintaining relative positioning for nav
+
+      .primary-menu-class {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          background-color: rgba(0, 0, 0, 0.9);
+          position: fixed; // Using fixed to ensure it's positioned relative to the viewport
+          top: 0; // Align to the top
+          right: -100%; // Start off-screen
+          width: 50%; // Width for desktop
+          height: 100vh; // Full viewport height
+          box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+          transition: right 0.3s ease; // Smooth transition for sliding in
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          &.is-active {
+              right: 0; // Bring into view when active
+          }
+
+          li {
+              width: 100%;
+              text-align: center;
+
+              a {
+                  padding: 10px 20px;
+                  display: block;
+                  width: 100%;
+                  color: #00aff0;
+
+                  &:hover, &:focus {
+                      background-color: rgba(255,255,255,0.1);
+                      color: #00aff0;
+                  }
+              }
+          }
+      }
+  }
+}
+
+@media (max-width: 1024px) {
+  nav .primary-menu-class {
+      width: 40%; // Adjusting for tablets and mobile
+  }
+}
+
+@media (max-width: 600px) {
+  nav .primary-menu-class {
+      width: 100%; // Full width for mobile
+  }
+}

@@ -1,0 +1,14 @@
+body {
+    font-family: $font-family;
+    color: $primary-color;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }

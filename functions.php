@@ -41,6 +41,13 @@ function zacked_enqueue_block_editor_assets() {
 }
 add_action('enqueue_block_editor_assets', 'zacked_enqueue_block_editor_assets');
 
+function zacked_enqueue_styles() {
+    // Correct the path by adding a slash before 'assets'
+    wp_enqueue_style('zacked-style', get_template_directory_uri() . '/assets/css/style.css');
+    wp_enqueue_script('zacked-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'zacked_enqueue_styles');
+
 
 function zacked_register_custom_category($categories, $post) {
     return array_merge(
@@ -55,6 +62,17 @@ function zacked_register_custom_category($categories, $post) {
     );
 }
 add_filter('block_categories_all', 'zacked_register_custom_category', 10, 2);
+
+function zacked_register_menus() {
+    register_nav_menus(
+        array(
+            'primary' => __('Primary Menu', 'zacked'), // 'primary' is the location and 'Primary Menu' is the description.
+            'footer'  => __('Footer Menu', 'zacked')  // Additional menu example for footer.
+        )
+    );
+}
+add_action('after_setup_theme', 'zacked_register_menus');
+
 
 
 

@@ -8,7 +8,7 @@ wp.domReady(() => {
             }
             settings.categories.push({
                 slug: 'custom-category',
-                title: 'Custom Theme Block Category',
+                title: 'Theme Custom Block',
                 icon: 'star-filled'
             });
             return settings;
