@@ -1,0 +1,18 @@
+{
+    "name": "coricsdev/zacked",
+    "description": "A custom WordPress theme",
+    "type": "wordpress-theme",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Zacked\\": "inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rico Dadiz",
+            "email": "dadizrico@gmail.com"
+     
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+.content-area {
+    background: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .entry-header {
+    background: #0062cc;
+    color: #ffffff;
+    padding: 15px 20px;
+  }
+  
+  .entry-title {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .entry-content {
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+  
+  .page-links {
+    margin-top: 20px;
+    a {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  
+  .entry-footer {
+    margin-top: 20px;
+    .edit-link {
+      display: block;
+      text-align: right;
+      color: #007bff;
+      &:hover {
+        color: #0056b3;
+      }
+    }
+  }
+  
