@@ -1,10 +1,10 @@
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor; // Changed from wp.editor to wp.blockEditor
 
-registerBlockType('zacked/custom-block', {
-    title: 'Custom Block',
+registerBlockType('zacked/my-custom-block', {
+    title: 'My Custom Block',
     icon: 'smiley',
-    category: 'layout',
+    category: 'custom-category',
     attributes: {
         content: {
             type: 'string',
@@ -12,9 +12,8 @@ registerBlockType('zacked/custom-block', {
             selector: 'p',
         }
     },
-
     edit: ({ attributes, setAttributes }) => {
-        const onChangeContent = (newContent) => {
+        const onChangeContent = newContent => {
             setAttributes({ content: newContent });
         };
 
@@ -26,7 +25,6 @@ registerBlockType('zacked/custom-block', {
             />
         );
     },
-
     save: ({ attributes }) => {
         return (
             <RichText.Content tagName="p" value={attributes.content} />
